@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask SocketIO Test</title>
+</head>
+<body>
+  <p>Some sample code to make sure Flask-SocketIO works...</p>
+  <button onclick="ping()">PING</button>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf-8">
+    // var socket = io.connect('http://' + document.domain + ':' + location.port);
+    const socket = io();
+
+    // verify our websocket connection is established
+    socket.on('connect', function() {
+        console.log('Websocket connected!');
+    });
+
+    // prints when client disconnects
+    socket.on('disconnect', function() {
+        console.log('Websocket disconnected!');
+    });
+
+    // message handler for the 'pinger' event
+    socket.on('pinger', function(msg) {
+        console.log('RECEIVED PONG... ', msg);
+    });
+
+    function ping() {
+      console.log('SENDING PING...');
+      socket.emit('pinger', 'py client ping');
+    }
+  </script>
+</body>
+</html>

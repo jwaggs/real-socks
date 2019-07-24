@@ -1,0 +1,9 @@
+Flask
+firebase-admin
+google-cloud-logging
+pytest
+python-dateutil
+pip-tools
+flask-socketio
+eventlet
+redis
