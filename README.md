@@ -13,3 +13,7 @@ Had the message format been included in the socket.io protocol, my attempts to d
 But instead the results unfortunately indicate that the different socket.io libraries don't use a compatible message format, and therefor do not work well together.
 
 I would be curious to inquire why a standardized message format was not considered within the scope of the socket.io protocol, but such inquiries are outside of the scope of my own efforts, and therefor I will not be finishing this POC.
+
+For anyone curious, you can get both of the provided node processes running via `npm install` then `node index.js`. To get both of the python environments up, just run `pip3 install -r requirements.txt` then `python3 app.py`. The node service runs on port 3000, python service runs on port 5000, they expect redis to be available on the default port 6379, and each service is using the redis channel `socket.io#/#` for it's pub/sub key.
+
+To see the versions installed check the committed package-lock.json and requirements.txt files correspondingly. 
